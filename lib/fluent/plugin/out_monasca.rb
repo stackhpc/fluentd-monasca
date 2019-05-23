@@ -20,6 +20,7 @@ class Fluent::MonascaOutput < Fluent::BufferedOutput
   config_param :password, :string, secret: true
   config_param :domain_id, :string
   config_param :project_name, :string
+  config_param :message_field_name, :string, default: 'message'
 
   public
 
@@ -84,7 +85,7 @@ class Fluent::MonascaOutput < Fluent::BufferedOutput
   # Convert a record into a [message, dimensions] pair.
   def convert_record(tag, record)
     # Assume that all non-message items in the record are dimensions.
-    message = record.delete("message")
+    message = record.delete(@message_field_name)
     dimensions = record
     dimensions["tag"] = tag
     [message, dimensions]
