@@ -40,16 +40,6 @@ module Monasca
     rescue => e
       @log.warn('Sending message to monasca-log-api threw exception', exceptionew: e)
     end
-
-    # Send multiple logs to monasca-log-api, requires token
-    # logs should be an Array of Arrays: [[message, dimensions], ...]
-    #def send_logs_bulk(logs, token,  dimensions, application_type = nil)
-    #end
-
-    #private
-
-    #def request(message, token, dimensions, application_type)
-    #end
   end
 
   # Monasca log API V2.0 client.
