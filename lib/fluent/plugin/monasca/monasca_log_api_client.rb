@@ -39,6 +39,7 @@ module Monasca
       @log.debug("Successfully sent log=#{message}, with token=#{token} and dimensions=#{dimensions} to monasca-log-api")
     rescue => e
       @log.warn('Sending message to monasca-log-api threw exception', exceptionew: e)
+      raise
     end
   end
 
@@ -84,6 +85,7 @@ module Monasca
       @log.debug("Successfully sent bulk logs, with token=#{token} and dimensions=#{dimensions} to monasca-log-api")
     rescue => e
       @log.warn('Bulk sending messages to monasca-log-api threw exception', exceptionew: e)
+      raise
     end
 
     private
